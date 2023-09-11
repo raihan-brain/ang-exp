@@ -1,8 +1,22 @@
-<h1 class="text-3xl font-bold underline">
-  Angular Router
-</h1>
-<nav>
-  <a routerLink="/crisis-center" routerLinkActive="active" >Crisis Center</a>
-  <a routerLink="/heroes" routerLinkActive="active" >Heroes</a>
-</nav>
-<router-outlet></router-outlet>
+<body>
+<div class="grid-container">
+  <header>
+    <p>working on it</p>
+  </header>
+  <nav>
+    <ol>
+      <li>
+        <a routerLink="/crisis-center" routerLinkActive="active" >Crisis Center</a>
+      </li>
+      <li>
+        <a routerLink="/heroes" routerLinkActive="active" >Heroes</a>
+      </li>
+    </ol>
+
+  </nav>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <footer></footer>
+</div>
+</body>
