@@ -12,10 +12,14 @@ $breakpoint-tablet: 768px;
       "footer";
   }
   nav{
-  display: none;
-    &.active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    &:active {
       transform: translateX(0);
-      display: block;
     }
   }
 }
