@@ -16,10 +16,26 @@ $breakpoint-tablet: 768px;
     top: 0;
     left: 0;
     height: 100dvh;
+    z-index: 1102;
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
-    &:active {
+    &.active {
       transform: translateX(0);
+    }
+  }
+
+  .layout-mask {
+    background-color: rgba(0, 0, 0, 0.1);
+
+    &.layout-mask-active {
+      z-index: 1101;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: background-color .5s;
     }
   }
 }

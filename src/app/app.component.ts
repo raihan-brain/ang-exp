@@ -8,6 +8,7 @@ import {ScreenSizeService} from "./common-service/screen-size.service";
 })
 export class AppComponent implements OnInit{
 
+  menuActive = false;
   screenSize: string = "";
   title = 'ang_exp';
 
@@ -17,5 +18,14 @@ export class AppComponent implements OnInit{
     this.screenSizeService.getScreenSize$().subscribe(size => {
       this.screenSize = size;
     });
+  }
+
+  onMenuButtonClick() {
+    console.log("==== fired====")
+    this.menuActive = true;
+  }
+
+  onMaskClick() {
+    this.menuActive = false;
   }
 }
