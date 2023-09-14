@@ -8,6 +8,8 @@ import { HeroListComponent } from './hero-list/hero-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TopbarComponent } from './layout/topbar/topbar.component';
 import { HeroesModule } from './heroes/heroes.module';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { HeroesModule } from './heroes/heroes.module';
     CririsListComponent,
     HeroListComponent,
     PageNotFoundComponent,
-    TopbarComponent
+    TopbarComponent,
+    HeroDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HeroesModule
+    HeroesModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

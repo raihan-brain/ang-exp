@@ -7,3 +7,6 @@
     </button>
   </li>
 </ul>
+<p>Enter hero name</p>
+<input [(ngModel)]="heroName" (keydown.enter)="testBinding()">
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>

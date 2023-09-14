@@ -17,4 +17,8 @@ export class HeroService {
     this.messageService.add('HeroService: fetched heroes');
     return heroes;
   }
+
+  setHero(hero:Hero):void{
+    HEROES.push(hero);
+  }
 }
