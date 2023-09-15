@@ -8,7 +8,7 @@ import { ScreenSizeService } from '../../common-service/screen-size.service';
 })
 export class TopbarComponent implements OnInit {
   @Output() menuButtonClick: EventEmitter<any> = new EventEmitter();
-  showButton: boolean = false;
+  showButton = false;
   constructor(private screenSizeService: ScreenSizeService) {}
 
   ngOnInit(): void {

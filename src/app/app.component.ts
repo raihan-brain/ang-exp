@@ -9,7 +9,7 @@ import { initFlowbite } from 'flowbite';
 })
 export class AppComponent implements OnInit {
   menuActive = false;
-  screenSize: string = '';
+  screenSize = '';
   title = 'ang_exp';
 
   constructor(private screenSizeService: ScreenSizeService) {}

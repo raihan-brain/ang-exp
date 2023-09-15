@@ -13,7 +13,7 @@ export class HeroListComponent implements OnInit, OnDestroy {
   heroes: Hero[] = [];
   selectedHero?: Hero;
   hhService: Subscription | undefined;
-  heroName: string = '';
+  heroName = '';
 
   constructor(
     private heroService: HeroService,
