@@ -15,7 +15,13 @@
         </li>
       </ol>
     </nav>
-
+    <div
+      id="layout-mask"
+      class="layout-mask"
+      [ngClass]="{ 'layout-mask-active': menuActive }"
+      (click)="onMaskClick()"
+      (keydown.enter)="onMaskClick()"
+      tabindex="{1}"></div>
     <main>
       screen size: {{ screenSize }}
       <router-outlet></router-outlet>
