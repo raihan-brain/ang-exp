@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ScreenSizeService} from "./common-service/screen-size.service";
+import {initFlowbite} from "flowbite";
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit{
     this.screenSizeService.getScreenSize$().subscribe(size => {
       this.screenSize = size;
     });
+    initFlowbite();
   }
 
   onMenuButtonClick() {
