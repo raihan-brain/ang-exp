@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HeroService } from '../hero.service';
-import { MessageService } from '../message.service';
-import { Hero } from '../hero';
+import { MessageService } from '../../message.service';
+import { Hero } from '../../hero';
 import { Subscription } from 'rxjs';
 
 @Component({
