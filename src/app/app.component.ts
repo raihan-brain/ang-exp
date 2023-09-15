@@ -1,16 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {ScreenSizeService} from "./common-service/screen-size.service";
-import {initFlowbite} from "flowbite";
+import { Component, OnInit } from '@angular/core';
+import { ScreenSizeService } from './common-service/screen-size.service';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit{
-
+export class AppComponent implements OnInit {
   menuActive = false;
-  screenSize: string = "";
+  screenSize: string = '';
   title = 'ang_exp';
 
   constructor(private screenSizeService: ScreenSizeService) {}
@@ -23,7 +22,7 @@ export class AppComponent implements OnInit{
   }
 
   onMenuButtonClick() {
-    console.log("==== fired====")
+    console.log('==== fired====');
     this.menuActive = true;
   }
 

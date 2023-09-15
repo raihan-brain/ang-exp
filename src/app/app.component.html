@@ -1,24 +1,28 @@
 <body>
-<div class="grid-container">
-  <header>
-    <app-topbar (menuButtonClick)="onMenuButtonClick()"></app-topbar>
-  </header>
-  <nav [ngClass]="{'active': menuActive}">
-    <ol>
-      <li>
-        <a routerLink="/crisis-center" routerLinkActive="active" >Crisis Center</a>
-      </li>
-      <li>
-        <a routerLink="/heroes" routerLinkActive="active" >Heroes</a>
-      </li>
-    </ol>
-
-  </nav>
-  <div class="layout-mask" [ngClass]="{'layout-mask-active': menuActive}" (click)="onMaskClick()"></div>
-  <main>
-    screen size: {{screenSize}}
-    <router-outlet></router-outlet>
-  </main>
-  <footer></footer>
-</div>
+  <div class="grid-container">
+    <header>
+      <app-topbar (menuButtonClick)="onMenuButtonClick()"></app-topbar>
+    </header>
+    <nav [ngClass]="{ active: menuActive }">
+      <ol>
+        <li>
+          <a routerLink="/crisis-center" routerLinkActive="active"
+            >Crisis Center</a
+          >
+        </li>
+        <li>
+          <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+        </li>
+      </ol>
+    </nav>
+    <div
+      class="layout-mask"
+      [ngClass]="{ 'layout-mask-active': menuActive }"
+      (click)="onMaskClick()"></div>
+    <main>
+      screen size: {{ screenSize }}
+      <router-outlet></router-outlet>
+    </main>
+    <footer></footer>
+  </div>
 </body>

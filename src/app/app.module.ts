@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TopbarComponent } from './layout/topbar/topbar.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,15 +18,10 @@ import {FormsModule} from "@angular/forms";
     HeroListComponent,
     PageNotFoundComponent,
     TopbarComponent,
-    HeroDetailComponent
+    HeroDetailComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HeroesModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HeroesModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

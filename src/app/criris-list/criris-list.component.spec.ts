@@ -8,7 +8,7 @@ describe('CririsListComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CririsListComponent]
+      declarations: [CririsListComponent],
     });
     fixture = TestBed.createComponent(CririsListComponent);
     component = fixture.componentInstance;
