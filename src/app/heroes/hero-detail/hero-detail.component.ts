@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../../hero';
+import { Hero } from '../hero';
 import { Observable, switchMap } from 'rxjs';
 import { HeroService } from '../hero.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
