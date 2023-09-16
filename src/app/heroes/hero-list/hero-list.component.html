@@ -7,20 +7,19 @@
 
 <div
   class="w-80 rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-  *ngFor="let hero of heroes">
-  <button
-    (click)="onSelect(hero)"
+  *ngFor="let hero of heroes$ | async">
+  <a
+    [routerLink]="['/hero', hero.id]"
     aria-current="true"
     type="button"
     class="w-full cursor-pointer rounded-t-lg border-b border-gray-200 px-4 py-2 text-left font-medium focus:outline-none dark:border-gray-600 dark:bg-gray-800"
     [ngClass]="
-      selectedHero?.name === hero.name ? 'text-white bg-blue-700' : 'text-black'
+      hero.id === selectedId ? 'text-white bg-blue-700' : 'text-black'
     ">
     <span>{{ hero.id }} </span>
     <span>{{ hero.name }}</span>
-  </button>
+  </a>
 </div>
 
 <p>Enter hero name</p>
 <input [(ngModel)]="heroName" (keydown.enter)="testBinding()" />
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>

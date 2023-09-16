@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HeroService } from '../hero.service';
-import { MessageService } from '../../message.service';
 import { Hero } from '../../hero';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, switchMap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-hero-list',
@@ -10,29 +10,22 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./hero-list.component.scss'],
 })
 export class HeroListComponent implements OnInit, OnDestroy {
-  heroes: Hero[] = [];
-  selectedHero?: Hero;
+  heroes$!: Observable<Hero[]>;
   hhService: Subscription | undefined;
   heroName = '';
+  selectedId = 0;
 
   constructor(
     private heroService: HeroService,
-    private messageService: MessageService
+    private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.getHeroes();
-  }
-
-  //create get heroes method
-  getHeroes(): void {
-    this.hhService = this.heroService
-      .getHeroes()
-      .subscribe(heroes => (this.heroes = heroes));
-  }
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroListComponent: Selected hero id=${hero.id}`);
+    this.heroes$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        this.selectedId = parseInt(params.get('id')!, 10);
+        return this.heroService.getHeroes();
+      })
+    );
   }
 
   ngOnDestroy(): void {
