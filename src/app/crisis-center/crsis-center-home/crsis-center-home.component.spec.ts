@@ -8,7 +8,7 @@ describe('CrsisCenterHomeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CrsisCenterHomeComponent]
+      declarations: [CrsisCenterHomeComponent],
     });
     fixture = TestBed.createComponent(CrsisCenterHomeComponent);
     component = fixture.componentInstance;
