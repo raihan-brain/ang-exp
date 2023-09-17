@@ -1,0 +1,16 @@
+<h3>Welcome to the Crisis Center</h3>
+<div
+  class="w-80 rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+  *ngFor="let crisis of crises$ | async">
+  <a
+    [routerLink]="['./', crisis.id]"
+    aria-current="true"
+    type="button"
+    class="w-full cursor-pointer rounded-t-lg border-b border-gray-200 px-4 py-2 text-left font-medium focus:outline-none dark:border-gray-600 dark:bg-gray-800"
+    [ngClass]="
+      crisis.id === selectedCrisisId ? 'text-white bg-blue-700' : 'text-black'
+    ">
+    <span>{{ crisis.id }} </span>
+    <span>{{ crisis.name }}</span>
+  </a>
+</div>
