@@ -8,9 +8,10 @@ import { TopbarComponent } from './layout/topbar/topbar.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { FormsModule } from '@angular/forms';
 import { CrisisCenterModule } from './crisis-center/crisis-center.module';
+import { ComposeMessageComponent } from './compose-message/compose-message.component';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, TopbarComponent],
+  declarations: [AppComponent, PageNotFoundComponent, TopbarComponent, ComposeMessageComponent],
   imports: [
     BrowserModule,
     HeroesModule,

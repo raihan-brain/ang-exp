@@ -25,6 +25,8 @@
     <main>
       screen size: {{ screenSize }}
       <router-outlet></router-outlet>
+      <a [routerLink]="[{ outlets: { popup2: ['compose-log'] } }]">Contact</a>
+      <router-outlet name="popup2"></router-outlet>
     </main>
     <footer></footer>
   </div>
