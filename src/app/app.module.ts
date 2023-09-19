@@ -9,14 +9,21 @@ import { HeroesModule } from './heroes/heroes.module';
 import { FormsModule } from '@angular/forms';
 import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, TopbarComponent, ComposeMessageComponent],
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent,
+    TopbarComponent,
+    ComposeMessageComponent,
+  ],
   imports: [
     BrowserModule,
     HeroesModule,
     FormsModule,
     CrisisCenterModule,
+    AdminModule,
     AppRoutingModule,
   ],
   providers: [],
