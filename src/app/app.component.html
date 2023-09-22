@@ -26,7 +26,8 @@
       (keydown.enter)="onMaskClick()"
       tabindex="{1}"></div>
     <main>
-      screen size: {{ screenSize }}
+      screen size: {{ screenSize }} <br />
+      logged in: {{ loggedInStatus }}
       <router-outlet></router-outlet>
       <a [routerLink]="[{ outlets: { popup2: ['compose-log'] } }]">Contact</a>
       <router-outlet name="popup2"></router-outlet>
