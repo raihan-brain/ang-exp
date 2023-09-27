@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Crisis } from '../crisis';
 import { CirsisService } from '../cirsis.service';
 
@@ -10,7 +10,8 @@ import { CirsisService } from '../cirsis.service';
   styleUrls: ['./crsis-detail.component.scss'],
 })
 export class CrsisDetailComponent implements OnInit {
-  crisis$!: Observable<Crisis>;
+  private editName: string | undefined;
+  crisis: Crisis | undefined;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -23,11 +24,11 @@ export class CrsisDetailComponent implements OnInit {
     // console.log('working on it');
   }
 
-  ngOnInit(): void {
-    this.crisis$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        return this.crisisService.getCrisis(parseInt(params.get('id')!));
-      })
-    );
+  ngOnInit() {
+    this.route.data.subscribe(data => {
+      const crisis: Crisis = data['crisis'];
+      this.editName = crisis.name;
+      this.crisis = crisis;
+    });
   }
 }
