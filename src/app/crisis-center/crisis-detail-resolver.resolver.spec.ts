@@ -4,8 +4,10 @@ import { ResolveFn } from '@angular/router';
 import { crisisDetailResolverResolver } from './crisis-detail-resolver.resolver';
 
 describe('crisisDetailResolverResolver', () => {
-  const executeResolver: ResolveFn<boolean> = (...resolverParameters) => 
-      TestBed.runInInjectionContext(() => crisisDetailResolverResolver(...resolverParameters));
+  const executeResolver: ResolveFn<boolean> = (...resolverParameters) =>
+    TestBed.runInInjectionContext(() =>
+      crisisDetailResolverResolver(...resolverParameters)
+    );
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
