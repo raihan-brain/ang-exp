@@ -7,7 +7,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TopbarComponent } from './layout/topbar/topbar.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { FormsModule } from '@angular/forms';
-import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 import { AuthModule } from './auth/auth.module';
 
@@ -22,7 +21,6 @@ import { AuthModule } from './auth/auth.module';
     BrowserModule,
     HeroesModule,
     FormsModule,
-    CrisisCenterModule,
     AuthModule,
     AppRoutingModule,
   ],
