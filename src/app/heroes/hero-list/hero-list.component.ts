@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero';
-import { Observable, Subscription, switchMap } from 'rxjs';
+import { map, Observable, Subscription, switchMap, take, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { HeroRestrictedService } from '../hero-restricted.service';
 
 @Component({
   selector: 'app-hero-list',
@@ -14,10 +15,12 @@ export class HeroListComponent implements OnInit, OnDestroy {
   hhService: Subscription | undefined;
   heroName = '';
   selectedId = 0;
+  heroAge$!: Observable<number>;
 
   constructor(
     private heroService: HeroService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private heroRestrictedService: HeroRestrictedService
   ) {}
   ngOnInit(): void {
     this.heroes$ = this.route.paramMap.pipe(
@@ -26,8 +29,14 @@ export class HeroListComponent implements OnInit, OnDestroy {
         return this.heroService.getHeroes();
       })
     );
+    this.heroAge$ = this.heroRestrictedService.heroAgeObserable$.pipe(
+      map(item => item * 2),
+      tap(item => console.log('item :', item))
+    );
   }
-
+  increaseHeroAge(): void {
+    this.heroRestrictedService.setHeroAge();
+  }
   ngOnDestroy(): void {
     this.hhService?.unsubscribe();
   }

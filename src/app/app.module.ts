@@ -19,9 +19,9 @@ import { AuthModule } from './auth/auth.module';
   ],
   imports: [
     BrowserModule,
-    HeroesModule,
     FormsModule,
     AuthModule,
+    HeroesModule,
     AppRoutingModule,
   ],
   providers: [],
