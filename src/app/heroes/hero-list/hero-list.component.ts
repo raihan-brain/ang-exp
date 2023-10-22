@@ -1,7 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero';
-import { map, Observable, Subscription, switchMap, take, tap } from 'rxjs';
+import { catchError, EMPTY, map, Subscription, switchMap, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { HeroRestrictedService } from '../hero-restricted.service';
 
@@ -9,31 +14,41 @@ import { HeroRestrictedService } from '../hero-restricted.service';
   selector: 'app-hero-list',
   templateUrl: './hero-list.component.html',
   styleUrls: ['./hero-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeroListComponent implements OnInit, OnDestroy {
-  heroes$!: Observable<Hero[]>;
+export class HeroListComponent implements OnDestroy {
+  heroes$ = this.route.paramMap.pipe(
+    switchMap(params => {
+      this.selectedId = parseInt(params.get('id')!, 10);
+      return this.heroService.getHeroes();
+    })
+  );
   hhService: Subscription | undefined;
   heroName = '';
   selectedId = 0;
-  heroAge$!: Observable<number>;
+  heroAge$ = this.heroRestrictedService.heroAgeObserable$.pipe(
+    map(item => {
+      item = item * 2;
+      if (item >= 1440) {
+        throw new Error('error');
+      }
+      return item;
+    }),
+    tap(item => console.log('item :', item)),
+    catchError(err => {
+      {
+        console.log('err :', err);
+        throw EMPTY;
+      }
+    })
+  );
 
   constructor(
     private heroService: HeroService,
     private route: ActivatedRoute,
     private heroRestrictedService: HeroRestrictedService
   ) {}
-  ngOnInit(): void {
-    this.heroes$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        this.selectedId = parseInt(params.get('id')!, 10);
-        return this.heroService.getHeroes();
-      })
-    );
-    this.heroAge$ = this.heroRestrictedService.heroAgeObserable$.pipe(
-      map(item => item * 2),
-      tap(item => console.log('item :', item))
-    );
-  }
+
   increaseHeroAge(): void {
     this.heroRestrictedService.setHeroAge();
   }
