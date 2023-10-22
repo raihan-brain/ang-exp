@@ -9,6 +9,7 @@ import { HeroesModule } from './heroes/heroes.module';
 import { FormsModule } from '@angular/forms';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 import { AuthModule } from './auth/auth.module';
+import { PublicModule } from './public/public.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     HeroesModule,
     AppRoutingModule,
+    PublicModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
