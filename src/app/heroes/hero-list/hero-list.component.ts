@@ -9,6 +9,7 @@ import { Hero } from '../hero';
 import { catchError, EMPTY, map, Subscription, switchMap, tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { HeroRestrictedService } from '../hero-restricted.service';
+import { BooksRepository } from '../../store/books.repository';
 
 @Component({
   selector: 'app-hero-list',
@@ -16,7 +17,7 @@ import { HeroRestrictedService } from '../hero-restricted.service';
   styleUrls: ['./hero-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeroListComponent implements OnDestroy {
+export class HeroListComponent implements OnDestroy, OnInit {
   heroes$ = this.route.paramMap.pipe(
     switchMap(params => {
       this.selectedId = parseInt(params.get('id')!, 10);
@@ -46,8 +47,13 @@ export class HeroListComponent implements OnDestroy {
   constructor(
     private heroService: HeroService,
     private route: ActivatedRoute,
-    private heroRestrictedService: HeroRestrictedService
+    private heroRestrictedService: HeroRestrictedService,
+    public bookRepository: BooksRepository
   ) {}
+
+  ngOnInit(): void {
+    this.heroService.getHeroBooks().subscribe();
+  }
 
   increaseHeroAge(): void {
     this.heroRestrictedService.setHeroAge();

@@ -32,3 +32,9 @@
 
 <p>Enter hero name</p>
 <input [(ngModel)]="heroName" (keydown.enter)="testBinding()" />
+
+<ul
+  class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400"
+  *ngFor="let book of bookRepository.books$ | async">
+  <li>book : {{ book | json }}</li>
+</ul>
