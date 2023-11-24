@@ -30,7 +30,7 @@ export class HeroListComponent implements OnDestroy, OnInit {
   heroAge$ = this.heroRestrictedService.heroAgeObserable$.pipe(
     map(item => {
       item = item * 2;
-      if (item >= 1440) {
+      if (item >= 2000) {
         throw new Error('error');
       }
       return item;
