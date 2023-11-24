@@ -8,13 +8,13 @@ export const crisisDetailResolverResolver: ResolveFn<Crisis> = route => {
   const router = inject(Router);
   const cs = inject(CirsisService);
   const id = parseInt(route.paramMap.get('id')!);
-  console.log('crisisDetailResolverResolver', id);
+  console.log('crisisDetailResolverResolver ==========', id);
   return cs.getCrisis(id).pipe(
     mergeMap(crisis => {
       if (crisis) {
         return of(crisis);
       } else {
-        console.log('crisisDetailResolverResolver', id);
+        console.log('crisisDetailResolverResolver ========', id);
         router.navigate(['/crisis-center']);
         return EMPTY;
       }
