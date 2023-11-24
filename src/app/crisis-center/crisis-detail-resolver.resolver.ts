@@ -19,6 +19,7 @@ export const crisisDetailResolverResolver: ResolveFn<Crisis> = route => {
         console.log(2 + 2);
         console.log(1);
         console.log(2);
+        console.log(3);
         router.navigate(['/crisis-center']);
         return EMPTY;
       }
