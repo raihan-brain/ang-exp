@@ -18,15 +18,15 @@ import { BooksRepository } from '../../store/books.repository';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroListComponent implements OnDestroy, OnInit {
+  hhService: Subscription | undefined;
+  heroName = '';
+  selectedId = 0;
   heroes$ = this.route.paramMap.pipe(
     switchMap(params => {
       this.selectedId = parseInt(params.get('id')!, 10);
       return this.heroService.getHeroes();
     })
   );
-  hhService: Subscription | undefined;
-  heroName = '';
-  selectedId = 0;
   heroAge$ = this.heroRestrictedService.heroAgeObserable$.pipe(
     map(item => {
       item = item * 2;
@@ -35,7 +35,9 @@ export class HeroListComponent implements OnDestroy, OnInit {
       }
       return item;
     }),
-    tap(item => console.log('item :', item)),
+    tap(item => {
+      console.log('item :', item);
+    }),
     catchError(err => {
       {
         console.log('err :', err);
@@ -58,6 +60,7 @@ export class HeroListComponent implements OnDestroy, OnInit {
   increaseHeroAge(): void {
     this.heroRestrictedService.setHeroAge();
   }
+
   ngOnDestroy(): void {
     this.hhService?.unsubscribe();
   }
