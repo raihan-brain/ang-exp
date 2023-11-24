@@ -4,10 +4,7 @@ import { inject } from '@angular/core';
 import { CirsisService } from './cirsis.service';
 import { EMPTY, mergeMap, of } from 'rxjs';
 
-export const crisisDetailResolverResolver: ResolveFn<Crisis> = (
-  route,
-  state
-) => {
+export const crisisDetailResolverResolver: ResolveFn<Crisis> = route => {
   const router = inject(Router);
   const cs = inject(CirsisService);
   const id = parseInt(route.paramMap.get('id')!);
@@ -17,6 +14,7 @@ export const crisisDetailResolverResolver: ResolveFn<Crisis> = (
       if (crisis) {
         return of(crisis);
       } else {
+        console.log('crisisDetailResolverResolver', id);
         router.navigate(['/crisis-center']);
         return EMPTY;
       }
